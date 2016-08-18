@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/babel">
+        var Text = React.createClass({
+            getInitialState: function() {
+                return {
+                    name: "stranger"
+                };
+            },
+
+            handleNameChange: function(event) {
+                this.setState({
+                    name: event.target.value || 'stranger'
+                });
+            },
+
+            render: function() {
+                return (
+                    <div className="well">
+                        <div className="form-group">
+                            <label className="control-label" htmlFor="focusedInput">Hello, {this.state.name}!</label>
+                            <input className="form-control" id="focusedInput" type="text" onChange={this.handleNameChange} />
+                        </div>
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <Text />,
+            document.getElementById('content')
+        );
+    </script>
+</body>
+</html>
